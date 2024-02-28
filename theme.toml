@@ -1,0 +1,16 @@
+name = "odd"
+description = "a theme for my personal blog"
+license = "MIT"
+homepage = "https://github.com/salaheddineghamri/odd"
+min_version = "0.1.0"
+demo = ""
+
+[extra]
+odd_menu = [
+    {url = "$BASE_URL", name = "Main"},
+]
+odd_title = ""
+
+[author]
+name = "Salah Eddine Ghamri"
+homepage = ""
