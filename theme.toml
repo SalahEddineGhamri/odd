@@ -7,7 +7,7 @@ demo = ""
 
 [extra]
 odd_menu = [
-    {url = "$BASE_URL", name = "Main"},
+    {url = "$BASE_URL", name = "Return to main"},
 ]
 odd_title = ""
 
