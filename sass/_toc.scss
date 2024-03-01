@@ -1,30 +1,46 @@
 @use "variables";
-$post-toc-margin-left: -400px !default;
+$post-toc-margin-left: -430px !default;
 $toc-max-sreen-width: 2 * 200px + $post-toc-margin-left !default;
 
 .profile-link {
-  display: inline-block; /* Make the anchor a block-level element */
-  position: relative; /* Positioning context for absolute positioning */
-  margin-top: -50px; /* Adjust the margin to shift the circle up */
+  display: inline-block;
+  position: relative;
+  margin-top: -50px;
 }
 
 .profile-container {
     padding: 10px;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid #ccc;
     display: flex;
     justify-content: center;
     align-items: center;
+    justify-items: center;
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .profile-image {
     width: 110%;
     height: auto;
     display: block;
-    transform: scale(2)
+    transform: scale(2);
+    transition: box-shadow 0.3s ease;
+}
+
+.profile-container:hover {
+  transform: scale(1.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.writer {
+  color: black;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
 }
 
 .post-toc {
@@ -46,7 +62,7 @@ $toc-max-sreen-width: 2 * 200px + $post-toc-margin-left !default;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-    gap: 20px;
+  gap: 10px;
 
   .toc-link{
       transition: transform 0.3s;
