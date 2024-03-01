@@ -3,23 +3,40 @@
 #header {
   padding: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 100%;
 
+  .pad {
+    flex-grow: 1;
+    flex-basis: 256px
+  }
 
-  .logo {
-    font-family: Chancery, cursive, LiSu, sans-serif;
-    font-weight: 400;
+  .cover-image{
+    flex-grow: 0;
+    align-self: center;
+    width: 1020px;
+    height: 315px;
+    object-fit: cover;
+  }
 
-    a {
-      color: variables.$main-colour;
-      font-size: 48px;
-    }
+  .return-to-main {
+      transition: transform 0.3s;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      fill: currentColor;
+      vertical-align: middle;
+      &:hover {
+        font-weight: bold;
+        transform: scale(1.4);
+      }
   }
 
   .menu {
+    flex-basis: 300px;
+    flex-grow: 1;
     align-self: flex-start;
-    font-family: variables.$decoration-font-family;
+    font-family: 'Inter';
 
     ul {
       display: inline-block;

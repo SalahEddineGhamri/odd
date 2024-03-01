@@ -4,4 +4,6 @@ sort_by = "date"
 [extra]
 tags = [""]
 categories = [""]
+author = ""
+image = ""
 +++

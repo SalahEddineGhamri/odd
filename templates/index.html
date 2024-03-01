@@ -10,6 +10,9 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {% if page %}
+      {% if page.extrat.image %}
+      <meta property="og:image" content="{{ page.extra.image}}" />
+      {% endif %}
       {% if page.description %}
       <meta name="description" content="{{ page.description }}" />
       {% elif config.description %}
@@ -54,15 +57,19 @@
 
     <body>
             <header id="header">
-                <div class="logo"><a href="{{ config.base_url }}">{{ config.extra.odd_title }}</a></div>
+                {% if page %}
+                <div class="pad"></div>
+                <img class="cover-image" src="{{ config.base_url ~ page.extra.image }}" alt="cover image">
+                {% endif %}
                 <nav class="menu">
                     <ul>
                         {% for item in config.extra.odd_menu %}
-                            <li>
-                                <a href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) }}">
-                                    {{ item.name }}
-                                </a>
-                            </li>
+                            <a href="{{ item.url | replace(from="$BASE_URL", to=config.base_url) }}" class="return-to-main" title="Return to main page">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                                    <path d="M0 0h24v24H0z" fill="none"/>
+                                    <path d="M12 3l-4 4h3v10h2V7h3z"/>
+                                </svg>
+                            </a>
                         {% endfor %}
                     </ul>
                 </nav>
