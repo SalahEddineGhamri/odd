@@ -1,0 +1,10 @@
+<blockquote class="callout equation">
+    <div class="content">
+        {% if header %}
+        <p><strong>{{ header }}</strong></p>
+        {% endif %}
+        <br>
+        <br>
+        {{ body | markdown | safe }}
+    </div>
+</blockquote>
