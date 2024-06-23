@@ -31,6 +31,16 @@ main {
       border-color: rgba(192, 91, 77, 0.8);
       background-color: rgba(192, 91, 77, 0.05);
     }
+    &.equation {
+      color: rgba(0, 0, 0, 1);
+      border-color: rgba(200, 200, 200, 0.8);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    &.alert {
+      color: rgba(0, 0, 0, 1);
+      border-color: rgba(200, 200, 200, 0.8);
+      background-color: rgba(255,153,51, 0.8);
+    }
   }
 
   .content {
