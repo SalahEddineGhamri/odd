@@ -1,0 +1,201 @@
+{% extends "index.html" %}
+
+{% block content %}
+<style>
+    /* --- STRUCTURAL RESPONSIVE GRID --- */
+    .home-flex-container {
+        display: flex;
+        flex-direction: column; /* Mobile first: Single column stacked layout */
+        gap: 2.5rem;
+        width: 100%;
+        align-items: start;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+        box-sizing: border-box;
+    }
+
+    /* Desktop Viewports (Screens wider than 768px) */
+    @media (min-width: 768px) {
+        .home-flex-container {
+            flex-direction: row; /* True side-by-side positioning */
+            justify-content: space-between;
+        }
+        .home-left-col {
+            flex: 5;
+            min-width: 0;
+            position: sticky;
+            top: 2rem; /* Pins your intro card dynamically while readers scroll posts */
+        }
+        .home-right-col {
+            flex: 7;
+            min-width: 0;
+        }
+    }
+
+    /* --- PREMIUM HOVER CARD EFFECTS --- */
+    .fancy-post-card {
+        background: #ffffff;
+        padding: 1.5rem;
+        border-radius: 8px;
+        border: 1px solid #e1e4e8;
+        box-sizing: border-box;
+        transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .fancy-post-card:hover {
+        transform: translateY(-4px);
+        border-color: #0366d6;
+        box-shadow: 0 10px 25px rgba(3, 102, 214, 0.06);
+    }
+
+    .home-post-link {
+        color: #1a1a1a;
+        text-decoration: none;
+        transition: color 0.2s ease;
+    }
+
+    .fancy-post-card:hover .home-post-link {
+        color: #0366d6;
+    }
+
+    /* --- LIVE BULLET ANIMATION --- */
+    @keyframes statusPulse {
+        0% { transform: scale(0.95); opacity: 0.5; }
+        50% { transform: scale(1.2); opacity: 1; }
+        100% { transform: scale(0.95); opacity: 0.5; }
+    }
+    .status-dot {
+        height: 8px;
+        width: 8px;
+        background-color: #28a745;
+        border-radius: 50%;
+        display: inline-block;
+        animation: statusPulse 2s infinite ease-in-out;
+    }
+</style>
+
+<div style="display: block; width: 100%; max-width: 100%; clear: both; margin: 0; padding: 0;">
+
+    <div style="width: 100%; height: 350px; background-image: linear-gradient(rgba(0, 0, 0, 0.45), rgba(0, 0, 0, 0.55)), url('{{ get_url(path=section.extra.image | default(value='images/flowers.jpg')) }}'); background-size: cover; background-position: center; display: flex; align-items: center; justify-content: center; text-align: center; border-radius: 8px; margin-bottom: 2.5rem;">
+        <div style="color: #ffffff; padding: 0 1rem; font-family: sans-serif;">
+            <h1 style="font-size: 2.8rem; font-weight: 700; margin: 0; text-shadow: 0 2px 8px rgba(0,0,0,0.7);">{{ section.title | default(value=config.title) }}</h1>
+            {% if section.description %}
+                <p style="font-size: 1.3rem; margin: 0.5rem 0 0 0; opacity: 0.95; text-shadow: 0 2px 4px rgba(0,0,0,0.7);">{{ section.description }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="home-flex-container">
+
+        <div class="home-left-col" style="width: 100%;">
+            <div style="background: #fafafa; padding: 2rem; border-radius: 8px; border-top: 4px solid #0366d6; box-shadow: 0 4px 15px rgba(0,0,0,0.03); box-sizing: border-box;">
+
+                <div style="color: #2c3e50; line-height: 1.6;">
+                    {{ section.content | safe }}
+                </div>
+
+                {% if config.extra.homepage_tech_stack %}
+                <div style="margin-top: 1.8rem; border-top: 1px solid #eaeaea; padding-top: 1.2rem;">
+                    <h4 style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #6a737d; margin: 0 0 0.6rem 0;">Tech Stack</h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        {% for tech in config.extra.homepage_tech_stack %}
+                            <span style="background: #e3f2fd; color: #0d47a1; font-size: 0.75rem; font-weight: 600; padding: 0.25rem 0.6rem; border-radius: 4px;">
+                                {{ tech }}
+                            </span>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <div style="margin-top: 1.5rem; padding: 0.75rem 1rem; background: #f1f8ff; border-radius: 6px; display: flex; align-items: center; gap: 0.6rem; box-sizing: border-box;">
+                    <span class="status-dot"></span>
+                    <span style="font-size: 0.85rem; color: #0366d6; font-weight: 500;">Available for open-source contributions</span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="home-right-col" style="width: 100%;">
+
+            <div style="position: relative; margin-bottom: 1.5rem; width: 100%; box-sizing: border-box;">
+                <input type="text" id="search-input" placeholder="Type to search updates instantly..." style="width: 100%; padding: 0.65rem 1rem; border: 1px solid #0366d6; border-radius: 6px; background: #ffffff; color: #1a1a1a; font-size: 0.9rem; box-sizing: border-box; outline: none; box-shadow: 0 2px 8px rgba(3,102,214,0.05);" />
+                <span id="search-status" style="position: absolute; right: 1rem; top: 50%; transform: translateY(-50%); color: #28a745; font-size: 0.8rem; font-weight: 600;">⚡ Live</span>
+            </div>
+
+            <h2 style="font-size: 1.5rem; font-weight: 700; margin-top: 0; margin-bottom: 1.5rem; border-bottom: 2px solid #eaeaea; padding-bottom: 0.5rem; color: #1a1a1a;">Latest Updates</h2>
+
+            <div id="posts-wrapper" style="display: flex; flex-direction: column; gap: 1.2rem;">
+                {% set target_pages = [] %}
+                {% if paginator %}
+                    {% set_global target_pages = paginator.pages %}
+                {% else %}
+                    {% set_global target_pages = section.pages %}
+                {% endif %}
+
+                {% if target_pages | length > 0 %}
+                    {% for page in target_pages %}
+                        <div class="fancy-post-card searchable-post" data-title="{{ page.title | lower }}" data-summary="{{ page.description | default(value='') | lower }}">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.3rem;">
+                                <span style="font-size: 0.8rem; color: #6a737d; font-weight: 500;">{{ page.date | date(format="%b %d, %Y") }}</span>
+                                <span style="font-size: 0.8rem; color: #6a737d; opacity: 0.85;">☕ {{ page.reading_time }} min read</span>
+                            </div>
+                            <h3 style="margin: 0.3rem 0; font-size: 1.35rem; font-weight: 600;"><a class="home-post-link" href="{{ page.permalink }}">{{ page.title }}</a></h3>
+                            <p style="color: #586069; font-size: 0.95rem; line-height: 1.5; margin: 0.3rem 0 0 0;">{{ page.description | default(value="Click to view full technical log entry...") }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p style="color: #6a737d; font-style: italic;">No updates published here yet.</p>
+                {% endif %}
+
+                <p id="no-results-msg" style="display: none; color: #6a737d; font-style: italic; text-align: center; margin-top: 2rem;">No matching logs found for that query.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.getElementById("search-input");
+        const searchStatus = document.getElementById("search-status");
+        const postCards = document.querySelectorAll(".searchable-post");
+        const noResultsMsg = document.getElementById("no-results-msg");
+
+        if (!searchInput) return;
+
+        searchInput.addEventListener("input", function(e) {
+            const query = e.target.value.toLowerCase().trim();
+            let visibleCount = 0;
+
+            if (query === "") {
+                postCards.forEach(card => card.style.display = "block");
+                noResultsMsg.style.display = "none";
+                searchStatus.innerText = "⚡ Live";
+                searchStatus.style.color = "#28a745";
+                return;
+            }
+
+            postCards.forEach(card => {
+                const title = card.getAttribute("data-title");
+                const summary = card.getAttribute("data-summary");
+
+                if (title.includes(query) || summary.includes(query)) {
+                    card.style.display = "block";
+                    visibleCount++;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            if (visibleCount === 0) {
+                noResultsMsg.style.display = "block";
+                searchStatus.innerText = "0 Found";
+                searchStatus.style.color = "#dc3545";
+            } else {
+                noResultsMsg.style.display = "none";
+                searchStatus.innerText = `${visibleCount} Found`;
+                searchStatus.style.color = "#0366d6";
+            }
+        });
+    });
+</script>
+{% endblock content %}

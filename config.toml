@@ -1,5 +1,4 @@
 # The URL the site will be built for
-#base_url = "https://salaheddineghamri.github.io/posts"
 base_url = ""
 
 compile_sass = true

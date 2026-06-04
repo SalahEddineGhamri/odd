@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% block content %}
+<div class="posts-list">
+    <h1 class="section-title">{{ section.title }}</h1>
+
+    {# Check if pagination is enabled #}
+    {% if paginator %}
+        {% for page in paginator.pages %}
+            <article class="post-preview">
+                {# Use your macro to render the title and meta dates #}
+                {{ post_macros::title(page=page) }}
+
+                {# Display a snippet of the post content if available #}
+                {% if page.summary %}
+                    <div class="post-summary">
+                        {{ page.summary | safe }}
+                    </div>
+                    <a class="read-more" href="{{ page.permalink }}">Read more...</a>
+                {% endif %}
+            </article>
+            <hr class="post-divider">
+        {% endfor %}
+
+        {# Optional: Simple pagination controls #}
+        <nav class="pagination">
+            {% if paginator.previous %}
+                <a href="{{ paginator.previous }}">← Newer</a>
+            {% endif %}
+            {% if paginator.next %}
+                <a href="{{ paginator.next }}">Older →</a>
+            {% endif %}
+        </nav>
+
+    {# Fallback if pagination is turned off in front-matter #}
+    {% elif section.pages %}
+        {% for page in section.pages %}
+            <article class="post-preview">
+                {{ post_macros::title(page=page) }}
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>No posts found in this section yet.</p>
+    {% endif %}
+</div>
+{% endblock content %}
