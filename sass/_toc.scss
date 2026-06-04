@@ -57,7 +57,7 @@ $toc-max-sreen-width: 2 * 200px + $post-toc-margin-left !default;
   position: fixed;
   top: 40%;
   font-family: 'Inter', sans-serif;
-  color: variables.$secondary-colour;
+  color: var(--secondary-colour);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -78,9 +78,9 @@ $toc-max-sreen-width: 2 * 200px + $post-toc-margin-left !default;
 
   li {
   margin-bottom: 5px;
-    color: variables.$secondary-colour;
+    color: var(--secondary-colour);
     .has-active{
-      color: variables.$main-colour;
+      color: var(--main-colour);
     }
   }
 
@@ -89,7 +89,7 @@ $toc-max-sreen-width: 2 * 200px + $post-toc-margin-left !default;
     font-size: 20px;
     font-weight: 400;
     text-transform: uppercase;
-    color: variables.$main-colour;
+    color: var(--main-colour);
   }
 
   .post-toc-content {
@@ -125,11 +125,11 @@ $toc-max-sreen-width: 2 * 200px + $post-toc-margin-left !default;
           width: 12px;
           height: 12px;
           border-radius: 50%;
-          background-color: variables.$secondary-colour;
+          background-color: var(--secondary-colour);
         }
 
         &.has-active::before{
-            background-color: variables.$main-colour;
+            background-color: var(--main-colour);
         }
 
       }
@@ -141,7 +141,7 @@ $toc-max-sreen-width: 2 * 200px + $post-toc-margin-left !default;
     }
 
     .toc-link.active {
-      color: variables.$main-colour;
+      color: var(--main-colour);
     }
   }
 }

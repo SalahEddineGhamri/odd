@@ -6,7 +6,7 @@ main {
   .callout {
     line-height: inherit;
     margin-bottom: 20px;
-    border: 1.5px solid var(--primary-color);
+    border: 1.5px solid var(--main-color);
     padding: 6px 12px;
     display: flex;
     gap: 0px;
@@ -16,9 +16,9 @@ main {
       align-items: center;
     }
     &.note {
-      color: rgba(variables.$main-colour, 0.8);
-      border-color: rgba(variables.$main-colour, 0.8);
-      background-color: rgba(variables.$main-colour, .05);
+      color: rgba(var(--bg-colour), 0.8);
+      border-color: rgba(var(--secondary-colour), 0.8);
+      background-color: rgba(var(--main-colour), .05);
     }
 
     &.important {
@@ -29,17 +29,17 @@ main {
     &.warning {
       color: rgba(192,91,77, 0.8);
       border-color: rgba(192, 91, 77, 0.8);
-      background-color: rgba(192, 91, 77, 0.05);
+      background-color: rgba(var(--main-colour), .05);
     }
     &.equation {
-      color: rgba(0, 0, 0, 1);
-      border-color: rgba(200, 200, 200, 0.8);
-      background-color: rgba(255, 255, 255, 0.05);
+      color: rgba(var(--bg-colour), 0.8);
+      border-color: rgba(var(--secondary-colour), 0.8);
+      background-color: rgba(var(--main-colour), .05);
     }
     &.alert {
       color: rgba(0, 0, 0, 1);
       border-color: rgba(200, 200, 200, 0.8);
-      background-color: rgba(255,153,51, 0.8);
+      background-color: rgba(var(--main-colour), .05);
     }
   }
 
@@ -47,6 +47,7 @@ main {
     padding: 0 30px;
     font-family: 'Inter', sans-serif;
     direction: attr(dir);
+    background: var(--bg-color); /* Added primary background */
   }
 
   .posts {
@@ -63,7 +64,7 @@ main {
       font-family: 'Inter', sans-serif;
 
       a {
-        color: variables.$main-colour;
+        color: var(--main-colour);
       }
     }
 
@@ -74,15 +75,15 @@ main {
     :not(pre) > code {
       padding: 3px 5px;
       border-radius: 4px;
-      color: variables.$code-colour;
-      background: variables.$secondary-colour;
+      color: var(--code-colour);
+      background: var(--secondary-colour);
     }
 
     p > a {
-      color: variables.$main-colour;
+      color: var(--main-colour);
 
       &:hover {
-        border-bottom: 1px solid variables.$main-colour;
+        border-bottom: 1px solid var(--main-colour);
       }
     }
 
@@ -108,16 +109,16 @@ main {
       box-shadow: 2px 2px 3px rgba(0, 0, 0, .125);
 
       thead {
-        background: variables.$secondary-colour;
+        background: var(--secondary-colour);
       }
 
       th, td {
         padding: 5px 15px;
-        border: 1px double darken(variables.$secondary-colour, 3%);
+        border: 1px double var(--secondary-colour-darker);
       }
 
       tr:hover {
-        background-color: variables.$secondary-colour;
+        background-color: var(--secondary-colour);
       }
     }
 
@@ -125,7 +126,7 @@ main {
       padding-left: 40px;
 
       &:first-of-type {
-        border-top: 2px dashed variables.$main-colour;
+        border-top: 2px dashed var(--main-colour);
         margin-top: 1rem;
         padding-top: 1rem;
       }
@@ -167,7 +168,7 @@ main {
         }
 
         &:hover {
-          color: variables.$main-colour;
+          color: var(--main-colour);
         }
       }
     }
@@ -200,7 +201,7 @@ main {
 
     a {
       margin-right: 5px;
-      color: variables.$main-colour;
+      color: var(--main-colour);
       word-break: break-all;
     }
   }
@@ -219,7 +220,7 @@ main {
     margin: 2rem 0;
 
     a {
-      color: variables.$main-colour;
+      color: var(--main-colour);
     }
   }
 }
@@ -230,7 +231,7 @@ main {
   transition: transform 0.3s ease-out;
 
   &:hover {
-    color: variables.$main-colour;
+    color: var(--main-colour);
   }
 }
 
@@ -255,8 +256,8 @@ main {
   &__title {
     display: inline-block;
     font-size: 18px;
-    color: variables.$main-colour;
-    border-bottom: 2px solid variables.$main-colour;
+    color: var(--main-colour);
+    border-bottom: 2px solid var(--main-colour);
   }
 
   &__items {
@@ -268,14 +269,14 @@ main {
       position: relative;
 
       &:hover {
-        color: variables.$main-colour;
+        color: var(--main-colour);
       }
 
       .count {
         position: relative;
         top: -8px;
         right: -2px;
-        color: variables.$main-colour;
+        color: var(--main-colour);
         font-size: 12px;
       }
     }
@@ -291,7 +292,7 @@ main {
     transition: 0.2s ease-out;
 
     &:hover {
-      border-left: 3px solid variables.$main-colour;
+      border-left: 3px solid var(--main-colour);
       transform: translateX(4px);
     }
 
@@ -301,18 +302,18 @@ main {
     }
 
     &__title a {
-      color: variables.$main-colour;
+      color: var(--main-colour);
     }
   }
 }
 
 .about {
   p > a {
-    color: variables.$main-colour;
+    color: var(--main-colour);
     word-break: break-all;
 
     &:hover {
-      border-bottom: 1px solid variables.$main-colour;
+      border-bottom: 1px solid var(--main-colour);
     }
   }
 }

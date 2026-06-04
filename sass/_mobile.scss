@@ -33,7 +33,7 @@
 
   .mobile-navbar-icon {
     cursor: pointer;
-    color: variables.$main-colour;
+    color: var(--main-colour);
     height: variables.$mobile-navbar-height;
     width: variables.$mobile-navbar-height;
     font-size: 24px;
@@ -47,25 +47,25 @@
 }
 
 .mobile-menu {
-  background-color: rgba(variables.$secondary-colour, 0.5);
+  background-color: rgba(var(--secondary-colour), 0.5);
 
   .mobile-menu-list {
     position: relative;
     list-style: none;
     margin-top: 50px;
     padding: 0;
-    border-top: 1px solid variables.$secondary-colour;
+    border-top: 1px solid var(--secondary-colour);
 
     .mobile-menu-item {
       padding: 10px 30px;
-      border-bottom: 1px solid variables.$secondary-colour;
+      border-bottom: 1px solid var(--secondary-colour);
     }
 
     a {
       font-size: 18px;
 
       &:hover {
-        color: variables.$main-colour;
+        color: var(--main-colour);
       }
     }
   }

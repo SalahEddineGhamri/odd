@@ -48,7 +48,7 @@
         @include animations.underline-from-center;
 
         a {
-          color: variables.$main-colour;
+          color: var(--main-colour);
           font-size: 18px;
         }
       }

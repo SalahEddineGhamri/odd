@@ -6,9 +6,9 @@ html {
 
 body {
   line-height: 1.5;
-  color: #000000;
-  background: #ffffff;
-  border-top: 3px solid variables.$main-colour;
+  color: var(--text-color);
+  background: var(--bg-color);
+  border-top: 3px solid var(--main-colour);
   overflow-y: scroll;
 }
 
@@ -30,7 +30,7 @@ body {
 }
 
 a {
-  color: variables.$main-colour;
+  color: var(--main-colour);
   text-decoration: none;
 }
 
@@ -51,7 +51,8 @@ pre, code {
   overflow: auto;
   font-family: variables.$code-font-family;
   margin-bottom: 0;
-  color: #c9d2dc;
+  color: var(--code-text);
+  background: var(--code-bg);
   direction: ltr;
 }
 

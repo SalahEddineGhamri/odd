@@ -6,15 +6,32 @@ $theme-color-map: (
   'Dark Violet': #9932CC #f5f4fa
 );
 
-// TODO: allow to change that
-$main-colour: #00aaf8;
-$secondary-colour: #e9f8fe;
-$third-colour: #2550c7;
 $body-width: 1000px;
 $mobile-navbar-height: 50px !default;
-$code-colour: #171327;
 $code-font-family: Consolas, Monaco, Menlo, Consolas, monospace !default;
 $decoration-font-family: Athelas, STHeiti, Microsoft Yahei, serif;
+
+:root {
+  // Light Mode Defaults
+  --main-colour: #00aaf8;
+  --secondary-colour: #e9f8fe;
+  --secondary-colour-darker: #e0f0f8;
+  --third-colour: #2550c7;
+  --code-colour: #171327;
+  --bg-color: #ffffff;
+  --text-color: #000000;
+}
+
+[data-theme="dark"] {
+  // Dark Mode (High Contrast)
+  --main-colour: #58c8ff;
+  --secondary-colour: #1a2a3a;
+  --secondary-colour-darker: #15222e;
+  --third-colour: #4d79f6;
+  --code-colour: #c9d2dc;
+  --bg-color: #121212;
+  --text-color: #e0e0e0;
+}
 
 @mixin min-screen($min-width: $body-width) {
    @media screen and (min-width: $min-width) {
